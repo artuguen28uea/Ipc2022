@@ -80,7 +80,7 @@ if n > 0:
     print("Fibonacci series for", n, "elements :")
     x = turtle.Turtle()
     x.speed(100)
-    fiboPlot(n)
+    fibo_plot(n)
     turtle.done()
 else:
     print("Number of iterations must be > 0")
