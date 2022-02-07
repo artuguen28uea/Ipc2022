@@ -4,7 +4,7 @@ import turtle
 import math
 
 
-def fiboPlot(n):
+def fibo_plot(n):
     a = 0
     b = 1
     square_a = a
