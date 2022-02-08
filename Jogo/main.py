@@ -91,6 +91,48 @@ screen.onkeypress(paddle_1_down, "s")
 screen.onkeypress(paddle_2_up, "u")
 screen.onkeypress(paddle_2_down, "j")
 
+# score
+score_1 = 0
+score_2 = 0
 
 while True:
     screen.update()
+
+    # Ball movement
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+    
+    # collision with upper wall
+    if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *= -1
+        
+    # collision with lower wall
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        ball.dy *= -1
+        
+    # Collision with the paddle 1
+    if ball.xcor() < -330 and paddle_1.ycor() + 50 > ball.ycor() > paddle_1.ycor() - 50:
+        ball.dx *= -1
+        
+    # Collision with the paddle 2
+    if ball.xcor() > 330 and paddle_2.ycor() + 50 > ball.ycor() > paddle_2.ycor() - 50:
+        ball.dx *= -1
+
+    # Colision with the right wall
+    if ball.xcor() < -390:
+        score_2 += 1
+        hud.clear()
+        hud.write(f"{score_1} : {score_2}", align="center", font=("Press Start 2P", 24, "normal"))
+        ball.goto(0, 0)
+        ball.dx *= -1
+        
+    # Colision with the left wall
+    if ball.xcor() > 390:
+        score_1 += 1
+        hud.clear()
+        hud.write(f"{score_1} : {score_2}", align="center", font=("Press Start 2P", 24, "normal"))
+        ball.goto(0, 0)
+        ball.dx *= -1
+        
