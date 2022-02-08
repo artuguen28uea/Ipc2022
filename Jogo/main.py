@@ -47,5 +47,50 @@ hud.hideturtle()
 hud.goto(0, 260)
 hud.write("0 : 0", align="center", font=("Press Start 2P", 24, "normal"))
 
+
+def paddle_1_up():
+    y = paddle_1.ycor()
+    if y < 250:
+        y += 30
+    else:
+        y = 250
+    paddle_1.sety(y)
+    
+    
+def paddle_1_down():
+    y = paddle_1.ycor()
+    if y > -250:
+        y += -30
+    else:
+        y = -250
+    paddle_1.sety(y)
+    
+
+def paddle_2_up():
+    y = paddle_2.ycor()
+    if y < 250:
+        y += 30
+    else:
+        y = 250
+    paddle_2.sety(y)
+
+
+def paddle_2_down():
+    y = paddle_2.ycor()
+    if y > -250:
+        y += -30
+    else:
+        y = -250
+    paddle_2.sety(y)
+    
+
+# keyboard
+screen.listen()
+screen.onkeypress(paddle_1_up, "w")
+screen.onkeypress(paddle_1_down, "s")
+screen.onkeypress(paddle_2_up, "u")
+screen.onkeypress(paddle_2_down, "j")
+
+
 while True:
     screen.update()
